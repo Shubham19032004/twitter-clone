@@ -3,6 +3,9 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Sidebar from "@/components/layouts/Sidebar";
 import FollowBar from "@/components/layouts/FollowBar";
+import Modal from "@/components/Modal";
+import LoginModal from "@/components/modals/LoginModal";
+import RegisterModal from "@/components/modals/RegisterModal";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,17 +21,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`h-screen bg-black `}>
+      <body className={`h-screen bg-black ${inter.className}`}>
         <div className="container h-full mx-auto xl:px-30 max-w-6xl">
           <div className="grid grid-cols-4 h-full">
-            <Sidebar/>
+            <Sidebar />
             <div className="col-span-3 lg:col-span-2 border-x-[1px] border-neutral-800">
-            {children}
+              {children}
             </div>
-            <FollowBar/>
+            <FollowBar />
           </div>
         </div>
+        <LoginModal/>
+        <RegisterModal/>
+        {/* <Modal title="Test Modal" actionLabel="Submit"
+          isOpen
+        /> */}
       </body>
     </html>
   );
+
 }
